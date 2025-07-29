@@ -46,16 +46,21 @@
 #include "usbd_desc.h"
 #include "usbd_conf.h"
 
-#define USBD_VID                      0x6666 // prototyping 
-#define USBD_PID                      0x1234 // random value
+#define USBD_VID                      0x0448 // KINEFDESIGNS
 #define USBD_LANGID_STRING            0x409
-#define USBD_MANUFACTURER_STRING      "STM32 Black Pill"
-#if defined(DAC_PCM5102A)
-#define USBD_PRODUCT_HS_STRING        "PCM5102A DAC"
-#define USBD_PRODUCT_FS_STRING        "PCM5102A DAC"
-#elif defined(DAC_UDA1334ATS)
-#define USBD_PRODUCT_HS_STRING        "UDA1334ATS DAC"
-#define USBD_PRODUCT_FS_STRING        "UDA1334ATS DAC"
+#define USBD_MANUFACTURER_STRING      "KINEFDESIGNS"
+#if defined(DEV_KHUB)
+#define USBD_PRODUCT_HS_STRING        "KHUB DAC"
+#define USBD_PRODUCT_FS_STRING        "KHUB DAC"
+#define USBD_PID                      0x0001
+#elif defined(DEV_KDAC)
+#define USBD_PRODUCT_HS_STRING        "KDAC DAC"
+#define USBD_PRODUCT_FS_STRING        "KDAC DAC"
+#define USBD_PID                      0x0002
+#elif defined(DEV_KAMP)
+#define USBD_PRODUCT_HS_STRING        "KAMP DAC"
+#define USBD_PRODUCT_FS_STRING        "KAMP DAC"
+#define USBD_PID                      0x0003
 #endif
 #define USBD_CONFIGURATION_HS_STRING  "AUDIO Config"
 #define USBD_INTERFACE_HS_STRING      "AUDIO Interface"
