@@ -31,10 +31,11 @@ fi
 # Handle result
 if [ "$is_valid" = true ]; then
 	# Build and flash for selected hardware
-	# Update serial number in JSON file
 	make clean
 	make DEVICE_NAME="DEV_$SELECTED_DEVICE" DEVICE_MK="$SELECTED_MK"
     make flash
+
+	# TODO: Update serial number in JSON file
 else
     echo "Invalid input: $SELECTED_DEVICE $SELECTED_MK"
 	echo "Usage: $0 <device> <mark>"
