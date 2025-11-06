@@ -22,13 +22,17 @@ DEVICE_NAME = DEV_KHUB
 # DEVICE_NAME = DEV_KDAC
 # DEVICE_NAME = DEV_KAMP
 
+# select the target device mark
+DEVICE_MK = 0
+
 # C defines
 C_DEFS =  \
 -DUSE_HAL_DRIVER \
 -DUSE_FULL_ASSERT \
 -D$(CPU_TARGET) \
 -D$(DAC_TARGET) \
--D$(DEVICE_NAME)
+-D$(DEVICE_NAME) \
+-DDEV_MK="\"$(DEVICE_MK)\""
 #-DDEBUG_FEEDBACK_ENDPOINT 
 #-DUSE_MCLK_OUT 
 # Note : MCLK output is only possible on F411 mcu

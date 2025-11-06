@@ -49,18 +49,21 @@
 #define USBD_VID                      0x0448 // KINEFDESIGNS
 #define USBD_LANGID_STRING            0x409
 #define USBD_MANUFACTURER_STRING      "KINEFDESIGNS"
+
+#if defined(DEV_MK)
 #if defined(DEV_KHUB)
-#define USBD_PRODUCT_HS_STRING        "KHUB DAC"
-#define USBD_PRODUCT_FS_STRING        "KHUB DAC"
+#define USBD_PRODUCT_HS_STRING        "KHUB MK" DEV_MK
+#define USBD_PRODUCT_FS_STRING        "KHUB MK" DEV_MK
 #define USBD_PID                      0x0001
 #elif defined(DEV_KDAC)
-#define USBD_PRODUCT_HS_STRING        "KDAC DAC"
-#define USBD_PRODUCT_FS_STRING        "KDAC DAC"
+#define USBD_PRODUCT_HS_STRING        "KDAC MK" DEV_MK
+#define USBD_PRODUCT_FS_STRING        "KDAC MK" DEV_MK
 #define USBD_PID                      0x0002
-#elif defined(DEV_KAMP)
-#define USBD_PRODUCT_HS_STRING        "KAMP DAC"
-#define USBD_PRODUCT_FS_STRING        "KAMP DAC"
+#elif defined(DEV_KHA)
+#define USBD_PRODUCT_HS_STRING        "KHA MK" DEV_MK
+#define USBD_PRODUCT_FS_STRING        "KHA MK" DEV_MK
 #define USBD_PID                      0x0003
+#endif
 #endif
 #define USBD_CONFIGURATION_HS_STRING  "AUDIO Config"
 #define USBD_INTERFACE_HS_STRING      "AUDIO Interface"
