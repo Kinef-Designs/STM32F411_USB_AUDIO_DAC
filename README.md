@@ -45,7 +45,7 @@ with no distortion at higher volumes.
 . The tools will be installed in `/opt/st/stm32cubeide_1.18.1`
 * [STLink V2 tools](https://github.com/stlink-org/stlink/releases). Install the .deb package using `sudo apt install xxx.deb`. I used a cheap STLink V2 clone. It accepted a firmware upgrade from STM32CubeIDE and still works (YMMV). Connect ONLY the SCK, DIO and GND pins on the STLink V2 interface to the Black Pill dev board. Connect the dev board via USB cable  to the PC to supply 5V power.
 
-## Build and flash  from Terminal 
+## Build and flash  from terminal command line
 * The project is a bare bones Makefile project and includes a snapshot of startup, linker script, CMSIS and HAL code from STM32 F4 firmware library v1.28.0. You do not need to install this library unless you want to create your own F4xx projects using the STM32 Cube IDE. 
 * Edit `Makefile` to
   * Select STM32F411 / STM32F401 MCU
@@ -56,12 +56,22 @@ with no distortion at higher volumes.
     * Add the paths to the toolchain binaries to your environment `PATH` variable. Installing STLink V2 tools should have already added the path to `st-flash`.
     * Run `make clean`, `make all`, `make flash` to build and flash the binary. 
 
-## Build and flash from STM32CubeIDE
- Copy the project source folder to the STM32CubeIDE workspace directory, then select `File -> Import -> Existing projects into workspace`  to add the project to your workspace.
-  
-  Copy `Project -> Settings -> C/C++ build -> Environment -> PATH`  from any existing STM32CubeIDE project for 
-  the F4xx MCU. Create and build a dummy project if you don't have one already. You will have to install the F4 firmware library 1.28.0 package via the `Help -> Manage Embedded Software Packages`.
-  Then you can invoke the build  from the IDE. 
+## Build in STM32CubeIDE
+I haven't used STM32CubeIDE in a while. Try these browser generated instructions. Maybe you need to also modify project settings to specify the toolchain path, or copy them from another dummy project created from scratch in CubeIDE for the specific microcontroller (F401/F411).
+```
+To import a Makefile project into STM32CubeIDE 1.19, follow these steps:
+
+Navigate to File > New > Makefile Project with Existing Code.
+In the "Project name" field, enter a name for your project.
+In the "Location" field, specify the path to the directory containing your existing Makefile and source code.
+Ensure the "Toolchain" is set to Cross GCC for ARM Cortex-M devices.
+Click Finish to create the project.
+After the project is created, you must configure the MCU target for the build:
+
+Right-click on the project in the Project Explorer and select Properties.
+Navigate to C/C++ Build > Settings.
+Under the MCU Settings tab, select the correct MCU (e.g., STM32L072RBTX) from the list. This step is crucial for the debugger to function correctly.
+```
   
 # Hardware
 
