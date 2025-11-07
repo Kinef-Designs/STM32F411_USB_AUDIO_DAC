@@ -2,9 +2,6 @@
 
 # Build and flash from the command line
 * Currently supported devices: KHUB, KDAC, KHA.
-* Run `./build.sh <device> <mark>` to build and flash the desired device
-    * For instance, `./build.sh KDAC 2` to build and flash for KDAC MK 2
+* Run `./build.sh <device> <mark> <serial string>` to build and flash the desired device
+    * For instance, `./build.sh KDAC 2 KDAC2_DEV` to build and flash for KDAC MK 2 with serial string "KDAC2\_DEV"
     * Run `./build.sh` for more details
-
-# TODO
-* Set and keep track of serial numbers
