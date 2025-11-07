@@ -274,18 +274,14 @@ uint8_t *USBD_AUDIO_InterfaceStrDescriptor(USBD_SpeedTypeDef speed, uint16_t *le
   */
 static void Get_SerialNum(void)
 {
-  uint32_t deviceserial0, deviceserial1, deviceserial2;
-  
-  deviceserial0 = *(uint32_t*)DEVICE_ID1;
-  deviceserial1 = *(uint32_t*)DEVICE_ID2;
-  deviceserial2 = *(uint32_t*)DEVICE_ID3;
-  
-  deviceserial0 += deviceserial2;
-  
-  if (deviceserial0 != 0)
-  {
-    IntToUnicode (deviceserial0, (uint8_t*)&USBD_StringSerial[2] ,8);
-    IntToUnicode (deviceserial1, (uint8_t*)&USBD_StringSerial[18] ,4);
+  // UTF-16 encoding
+  uint8_t idx = 0;
+  for (idx = 0; idx < SERIAL_STR_LEN; idx++) {
+    USBD_StringSerial[2 + 2*idx] = SERIAL_STR[idx];
+    USBD_StringSerial[2 + 2*idx + 1] = 0;
+
+    if (SERIAL_STR[idx] == '\0')
+        idx = SERIAL_STR_LEN;
   }
 }
 

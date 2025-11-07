@@ -32,7 +32,9 @@ C_DEFS =  \
 -D$(CPU_TARGET) \
 -D$(DAC_TARGET) \
 -D$(DEVICE_NAME) \
--DDEV_MK="\"$(DEVICE_MK)\""
+-DDEV_MK="\"$(DEVICE_MK)\"" \
+-DSERIAL_STR=L"\"$(DEVICE_SERIAL_STR)\\0\"" \
+-DSERIAL_STR_LEN=12
 #-DDEBUG_FEEDBACK_ENDPOINT 
 #-DUSE_MCLK_OUT 
 # Note : MCLK output is only possible on F411 mcu
