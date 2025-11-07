@@ -143,7 +143,6 @@ __ALIGN_BEGIN uint8_t USBD_StringSerial[USB_SIZ_STRING_SERIAL] __ALIGN_END =
 __ALIGN_BEGIN uint8_t USBD_StrDesc[USBD_MAX_STR_DESC_SIZ] __ALIGN_END;
 
 /* Private functions ---------------------------------------------------------*/
-static void IntToUnicode (uint32_t value , uint8_t *pbuf , uint8_t len);
 static void Get_SerialNum(void);
 
 /**
@@ -284,32 +283,3 @@ static void Get_SerialNum(void)
         idx = SERIAL_STR_LEN;
   }
 }
-
-/**
-  * @brief  Convert Hex 32Bits value into char 
-  * @param  value: value to convert
-  * @param  pbuf: pointer to the buffer 
-  * @param  len: buffer length
-  * @retval None
-  */
-static void IntToUnicode (uint32_t value , uint8_t *pbuf , uint8_t len)
-{
-  uint8_t idx = 0;
-  
-  for( idx = 0 ; idx < len ; idx ++)
-  {
-    if( ((value >> 28)) < 0xA )
-    {
-      pbuf[ 2* idx] = (value >> 28) + '0';
-    }
-    else
-    {
-      pbuf[2* idx] = (value >> 28) + 'A' - 10; 
-    }
-    
-    value = value << 4;
-    
-    pbuf[ 2* idx + 1] = 0;
-  }
-}
-
